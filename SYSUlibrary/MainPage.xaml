@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SYSUlibrary.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <controls:Pivot Title="中山大学图书馆" Name="pivot">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="查询" Name="pitem1">
+                <Grid>
+                    <Image Height="111" HorizontalAlignment="Left" Margin="1,1,0,0" Name="image1" Stretch="Uniform" VerticalAlignment="Top" Width="456" Source="/SYSUlibrary;component/title1.png" />
+                    <Image Height="140" HorizontalAlignment="Left" Margin="-3,401,0,0" Name="image2" Stretch="Uniform" VerticalAlignment="Top" Width="456" Source="/SYSUlibrary;component/title2.png" />
+                    <TextBlock Height="35" HorizontalAlignment="Left" Margin="1,568,0,0" Name="textBlock1" Text="CopyRight CodePlane 2012" VerticalAlignment="Top" Width="456" TextAlignment="Center" />
+                    <TextBox Height="72" HorizontalAlignment="Left" Margin="10,110,0,0" Name="textBox1" Text="" VerticalAlignment="Top" Width="443" />
+                    <Button Content="查询" Height="72" HorizontalAlignment="Left" Margin="144,166,0,0" Name="Search" VerticalAlignment="Top" Width="167" Click="Search_Click" />
+                    <TextBlock Height="37" HorizontalAlignment="Left" Margin="47,326,0,0" Name="textBlock3" Text="智慧与服务" VerticalAlignment="Top" Width="369" TextAlignment="Center" FontSize="30" />
+                    <TextBlock Height="34" HorizontalAlignment="Left" Margin="43,251,0,0" Name="Message" Text="这次是想借什么书？我来帮你找找吧！" TextAlignment="Center" VerticalAlignment="Top" Width="385" />
+                </Grid>
+            </controls:PivotItem>
+ 
+            <!--Pivot item two-->
+            <controls:PivotItem Header="结果" Name="pitem2"> 
+                <!--Triple line list no text wrapping-->
+                    <ListBox x:Name="SecondListBox" Margin="0,0,-12,0" ItemsSource="{Binding Items}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17">
+                                    <TextBlock Text="{Binding Title, Mode=TwoWay}" TextWrapping="NoWrap" Margin="12,0,0,0" Style="{StaticResource PhoneTextLargeStyle}" />
+                                    <TextBlock Text="{Binding Detail, Mode=TwoWay}" TextWrapping="Wrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+            </controls:PivotItem>
+            
+            <controls:PivotItem Header="帮助" Name="pitem3">
+                <Grid>
+                    <TextBlock Height="412" HorizontalAlignment="Left" Margin="2,4,0,0" Name="help" Text="TextBlock" VerticalAlignment="Top" Width="450" TextWrapping="Wrap" />
+                    <TextBlock Margin="13,0,7,6" Text="CopyRight CodePlane 2012" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" />
+                    <Image Height="111" HorizontalAlignment="Left" Margin="22,446,0,0" Name="image3" Stretch="Uniform" VerticalAlignment="Top" Width="421" Tap="image2_Tap" Source="/SYSUlibrary;component/weibo.png" />
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+        
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
